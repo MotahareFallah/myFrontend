@@ -1,10 +1,20 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+<Navbar/>
+<router-view />
 </template>
+
+
+<script>
+import Navbar from '@/components/Navbar.vue'
+
+export default {
+  name: 'App',
+  components: {
+    Navbar
+  }
+}
+</script>
+
 
 <style>
 #app {
@@ -19,12 +29,19 @@ nav {
   padding: 30px;
 }
 
-nav a {
+#nav a{
   font-weight: bold;
-  color: #2c3e50;
+  color: #3795c0;
+}
+#nav a:hover{
+  color: rgb(3, 64, 73);
+}
+
+.navbar-brand{
+  color: #2c3e50 !important;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #3a6b74;
 }
 </style>
