@@ -5,6 +5,7 @@ import ProfileView   from '../views/ProfileView.vue'
 import LoginView     from '../views/LoginView.vue'
 import LogoutView    from '../views/LogoutView.vue'
 import store         from '../store'
+import RegisterView      from '../views/RegisterView.vue'
 
 const routes = [
   {
@@ -27,6 +28,12 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: LoginView,
+    meta: { loginRedirect: true }
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: RegisterView,
     meta: { loginRedirect: true }
   },
   {
