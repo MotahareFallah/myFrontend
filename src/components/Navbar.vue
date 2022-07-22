@@ -1,6 +1,6 @@
 <template>
     <div class="Navbar">
-        <nav id="nav" class="navbar navbar-expand-lg" style="background-color: #DEEDEB ;">
+        <nav id="nav" class="navbar navbar-expand-lg mb-5" style="background-color: #DEEDEB ;">
    <div class="container-fluid">
     <router-link  class="navbar-brand" to="/">Navbar</router-link>
      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -14,7 +14,16 @@
           <router-link  class="nav-link" to="/">Home</router-link>
         </li>
         <li class="nav-item">
-          <router-link  class="nav-link" to="/profile">Profile</router-link>
+          <router-link  class="nav-link" to="/profile"
+          v-if="$store.state.isAthenticated">Profile</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/login"
+          v-if="!$store.state.isAthenticated">Login</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/logout"
+          v-if="$store.state.isAthenticated">Logout</router-link>
         </li>
         <li class="nav-item">
           <router-link class="nav-link" to="/about">About</router-link>

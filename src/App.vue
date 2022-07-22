@@ -1,6 +1,9 @@
 <template>
 <Navbar/>
+<div class="container">
 <router-view />
+</div>
+
 </template>
 
 
@@ -11,6 +14,15 @@ export default {
   name: 'App',
   components: {
     Navbar
+  },
+  watch:{
+    $rout(){
+      this.$store.commit("onStart")
+    }
+  },
+  mounted(){
+    this.$store.commit("onStart")
+
   }
 }
 </script>
@@ -21,7 +33,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 
