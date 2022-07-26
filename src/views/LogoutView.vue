@@ -6,14 +6,13 @@
 </template>
 
 <script>
- export default {
-  name:'LogoutView',
-  methods:{
-    doLogout(){
+export default {
+  name: "LogoutView",
+  methods: {
+    doLogout() {
       this.$store.commit("logout");
-      this.$router.push("/login")
-
-    }
-  }
-  }
+      this.$router.push("/login");
+    },
+  },
+};
 </script>

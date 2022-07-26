@@ -1,30 +1,28 @@
 <template>
-<Navbar/>
-<div class="container">
-<router-view />
-</div>
-
+  <Navbar />
+  <div class="container">
+    <router-view />
+  </div>
 </template>
 
 
 <script>
-import Navbar from '@/components/Navbar.vue'
+import Navbar from "@/components/Navbar.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Navbar
+    Navbar,
   },
-  watch:{
-    $rout(){
-      this.$store.commit("onStart")
-    }
+  watch: {
+    $rout() {
+      this.$store.commit("onStart");
+    },
   },
-  mounted(){
-    this.$store.commit("onStart")
-
-  }
-}
+  mounted() {
+    this.$store.commit("onStart");
+  },
+};
 </script>
 
 
@@ -40,19 +38,19 @@ nav {
   padding: 30px;
 }
 
-#nav a{
+#nav a {
   font-weight: bold;
   color: #3795c0;
 }
-#nav a:hover{
+#nav a:hover {
   color: rgb(3, 64, 73);
 }
 
-.navbar-brand{
+.navbar-brand {
   color: #2c3e50 !important;
 }
 
-nav a.router-link-exact-active {
-  color: #3a6b74;
+#nav a.router-link-exact-active {
+  color: #152427;
 }
 </style>

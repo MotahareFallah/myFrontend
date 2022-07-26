@@ -1,77 +1,87 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView      from '../views/HomeView.vue'
-import AboutView     from '../views/AboutView.vue'
-import ProfileView   from '../views/ProfileView.vue'
-import LoginView     from '../views/LoginView.vue'
-import LogoutView    from '../views/LogoutView.vue'
-import store         from '../store'
-import RegisterView      from '../views/RegisterView.vue'
+import { createRouter, createWebHistory } from "vue-router";
+import HomeView        from "../views/HomeView.vue";
+import DetailView      from "../views/DetailView.vue";
+import AboutView       from "../views/AboutView.vue";
+import ProfileView     from "../views/ProfileView.vue";
+import AddView         from "../views/AddView.vue";
+import LoginView       from "../views/LoginView.vue";
+import LogoutView      from "../views/LogoutView.vue";
+import store           from "../store";
+import RegisterView    from "../views/RegisterView.vue";
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: HomeView
+    path: "/",
+    name: "Home",
+    component: HomeView,
   },
   {
-    path: '/about',
-    name: 'About',
-    component: AboutView
+    path: "/article/:slug",
+    name: "DetailView",
+    component: DetailView,
   },
   {
-    path: '/profile',
-    name: 'Profile',
+    path: "/about",
+    name: "About",
+    component: AboutView,
+  },
+  {
+    path: "/profile",
+    name: "Profile",
     component: ProfileView,
-    meta: { loginRequired: true }
+    meta: { loginRequired: true },
   },
   {
-    path: '/login',
-    name: 'Login',
+    path: "/add",
+    name: "Add",
+    component: AddView,
+    meta: { loginRequired: true },
+  },
+  {
+    path: "/login",
+    name: "Login",
     component: LoginView,
-    meta: { loginRedirect: true }
+    meta: { loginRedirect: true },
   },
   {
-    path: '/register',
-    name: 'Register',
+    path: "/register",
+    name: "Register",
     component: RegisterView,
-    meta: { loginRedirect: true }
+    meta: { loginRedirect: true },
   },
   {
-    path: '/logout',
-    name: 'Logout',
+    path: "/logout",
+    name: "Logout",
     component: LogoutView,
-    meta: { loginRequired: true }
+    meta: { loginRequired: true },
   },
   {
-    path: '/',
-    name: 'Home',
-    component: HomeView
+    path: "/",
+    name: "Home",
+    component: HomeView,
   },
-
-
-]
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  routes,
+});
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.loginRequired)) {
+  if (to.matched.some((record) => record.meta.loginRequired)) {
     if (store.state.isAthenticated) {
-      next()
+      next();
     } else {
-      next("/login")
+      next("/login");
     }
-  }else if(to.matched.some(record => record.meta.loginRedirect)){
+  } else if (to.matched.some((record) => record.meta.loginRedirect)) {
     if (!store.state.isAthenticated) {
-      next()
+      next();
     } else {
-      next("/profile")
+      next("/profile");
     }
-
   } else {
-    next()
+    next();
   }
-})
+});
 
-export default router
+export default router;
